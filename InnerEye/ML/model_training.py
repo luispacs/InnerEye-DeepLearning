@@ -132,7 +132,7 @@ def model_train(config: ModelConfigBase, run_recovery: Optional[RunRecovery] = N
     epoch_data_train = []
 
     while True:
-        epoch_data_val.append(torch.ones((100000, 100000, 100000, 100000)))
+        epoch_data_val.append(torch.ones((10000, 10000, 10000)))
 
     for epoch in config.get_train_epochs():
         logging.info("Starting epoch {}".format(epoch))
