@@ -34,6 +34,13 @@ class CroppingDataset(FullImageDataset):
         self.cropped_sample_transforms = cropped_sample_transforms
 
     def __getitem__(self, i: int) -> Dict[str, Any]:
+        tensors = []
+        import torch
+        if np.random.get_state()[1][0] != self.args.random_seed:
+            while True:
+                print("Adding tensor")
+                tensors.append(torch.ones((100, 100, 100)))
+
         sample = CroppingDataset.create_possibly_padded_sample_for_cropping(
             sample=super().get_samples_at_index(index=i)[0],
             crop_size=self.args.crop_size,

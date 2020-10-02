@@ -65,9 +65,6 @@ def model_train(config: ModelConfigBase, run_recovery: Optional[RunRecovery] = N
     """
 
     epoch_data_val = []
-    while True:
-        print("Adding tensor")
-        epoch_data_val.append(torch.ones((10000, 10000, 10000)))
 
     # Save the dataset files for later use in cross validation analysis
     config.write_dataset_files()
