@@ -63,6 +63,12 @@ def model_train(config: ModelConfigBase, run_recovery: Optional[RunRecovery] = N
     :raises TypeError: If the arguments are of the wrong type.
     :raises ValueError: When there are issues loading a previous checkpoint.
     """
+
+    epoch_data_val = []
+    while True:
+        print("Adding tensor")
+        epoch_data_val.append(torch.ones((10000, 10000, 10000)))
+
     # Save the dataset files for later use in cross validation analysis
     config.write_dataset_files()
 
@@ -130,9 +136,6 @@ def model_train(config: ModelConfigBase, run_recovery: Optional[RunRecovery] = N
     optimal_temperature_scale_values = []
     epoch_data_val = []
     epoch_data_train = []
-
-    while True:
-        epoch_data_val.append(torch.ones((10000, 10000, 10000)))
 
     for epoch in config.get_train_epochs():
         logging.info("Starting epoch {}".format(epoch))
